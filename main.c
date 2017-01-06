@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define MAX_ITER 500 
-#define LEARN_RATE 0.115
+#define LEARN_RATE 0.08
 #define NEXAMPLES 130 
 #define NFEATURES 13 
 
