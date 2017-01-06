@@ -9,7 +9,7 @@ build_tset_pair(float *v, int c, int n)
     tmp->values = malloc(sizeof(float) * tmp->n);
     tmp->values[0] = 1;
     for(int i = 1; i < tmp->n; ++i)
-        tmp->values[i] = v[i];
+        tmp->values[i] = v[i - 1];
     return tmp;
 }
 

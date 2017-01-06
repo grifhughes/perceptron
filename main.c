@@ -1,8 +1,8 @@
 #include "perceptron.h"
 #include <stdio.h>
 
-#define MAX_ITER 750 
-#define LEARN_RATE 0.15
+#define MAX_ITER 500 
+#define LEARN_RATE 0.115
 #define NEXAMPLES 130 
 #define NFEATURES 13 
 
