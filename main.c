@@ -26,7 +26,7 @@ main(void)
     struct perceptron *p = build_perceptron(NFEATURES, LEARN_RATE);
     learn(p, training_examples, NEXAMPLES, MAX_ITER);
 
-    float nwrong = 0;
+    float nwrong = 0.0f;
     for(int i = 0; i < NEXAMPLES; ++i) { 
         if(classes[i] != classify(p, training_examples[i]))
             nwrong++;
