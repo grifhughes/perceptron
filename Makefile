@@ -1,7 +1,7 @@
 TARGET = prog
-LIBS = 
+LIBS =  
 CC = gcc
-CFLAGS = -O3 -march=native -mfpmath=sse -mtune=native 
+CFLAGS = -O3 -march=native -mtune=native  
 
 .PHONY: default all clean
 
