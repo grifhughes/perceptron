@@ -36,8 +36,8 @@ float dot_p(float *a, float *b, int l)
 static inline __attribute__((always_inline)) 
 float sigmoid(struct perceptron *p, struct tset_pair *tp)
 {
-    float result = dot_p(p->weights, tp->values, p->inputs);
-    return (result / (1 + fabsf(result)));
+    float x = dot_p(p->weights, tp->values, p->inputs);
+    return (x / (1 + fabsf(x)));
 }   
 
 static inline __attribute__((always_inline)) 
