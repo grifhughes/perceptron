@@ -3,6 +3,7 @@
 
 #include "train.h"
 #include <time.h>
+#include <math.h>
 
 /* single layer perceptron, weights[0] stores bias */
 struct perceptron {
@@ -32,10 +33,17 @@ float dot_p(float *a, float *b, int l)
     return r;
 }
 
-static inline __attribute__((always_inline))
-int classify(struct perceptron *p, struct tset_pair *tp)
+static inline __attribute__((always_inline)) 
+float sigmoid(struct perceptron *p, struct tset_pair *tp)
 {
-    return dot_p(p->weights, tp->values, p->inputs) >= 0 ? 1 : 0;
+    float result = dot_p(p->weights, tp->values, p->inputs);
+    return (result / (1 + fabsf(result)));
+}   
+
+static inline __attribute__((always_inline)) 
+int classify(float value)
+{
+    return value >= 0.5 ? 1 : 0;
 }
 
 #endif

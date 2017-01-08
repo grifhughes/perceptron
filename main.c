@@ -1,8 +1,8 @@
 #include "perceptron.h"
 #include <stdio.h>
 
-#define MAX_ITER 500 
-#define LEARN_RATE 0.08
+#define MAX_ITER 250 
+#define LEARN_RATE 0.12
 #define NEXAMPLES 130 
 #define NFEATURES 13 
 
@@ -28,7 +28,7 @@ main(void)
 
     float nwrong = 0.0f;
     for(int i = 0; i < NEXAMPLES; ++i) { 
-        if(classes[i] != classify(p, training_examples[i]))
+        if(classes[i] != classify(sigmoid(p, training_examples[i])))
             nwrong++;
         destroy_tset_pair(training_examples[i]);
     }
