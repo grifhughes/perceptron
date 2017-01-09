@@ -17,8 +17,8 @@ main(void)
     fp = fopen("data.txt", "r");
 
     /* parse file */
+    float tmp[NFEATURES];
     for(int i = 0; i < NEXAMPLES; ++i) {
-        float tmp[NFEATURES];
         fscanf(fp, "%f,%f,%f,%f,%d", &tmp[0], &tmp[1], &tmp[2], &tmp[3], &classes[i]);
         training_examples[i] = build_tset_pair(tmp, classes[i], NFEATURES);
     }
