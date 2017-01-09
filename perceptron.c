@@ -23,7 +23,9 @@ destroy_perceptron(struct perceptron *p)
 void
 learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
 {
-    for(int j = 0; j <= k; ++j) {
+    int iterations = 0;
+    while(iterations <= k) {
+        ++iterations;
         for(int i = 0; i < D; ++i) {
             int output = classify(p, tp[i]);
             float error = tp[i]->c - output;
@@ -32,7 +34,7 @@ learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
                 p->weights[0] += cached;
                 for(int a = 1; a < p->inputs; ++a) 
                     p->weights[a] += cached * tp[i]->values[a];
-            }
+            } 
         }
-    } 
+    }
 }
