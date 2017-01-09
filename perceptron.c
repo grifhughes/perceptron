@@ -20,22 +20,17 @@ destroy_perceptron(struct perceptron *p)
     free(p);
 }
 
-void
+void 
 learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
 {
-    int iterations = 0;
-    while(iterations <= k) {
-        ++iterations;
-        for(int i = 0; i < D; ++i) {
-            int output = classify(p, tp[i]);
-            float error = tp[i]->c - output;
-            if(error != 0) {
-                float cached = p->lrate * error;
-                p->weights[0] += cached;
-                /* start at 1 to update weights as bias is w[0] & x[0] is 1 */ 
-                for(int j = 1; j < p->inputs; ++j) 
-                    p->weights[j] += cached * tp[i]->values[j];
-            } else continue;
+    for(int i = 0; i < k; ++i) {
+        for(int j = 0; j < D; ++j) {
+            int output = classify(p, tp[j]);
+            float error = tp[j]->c - output;
+            if(error != 0) 
+                update_weights(p, tp[j], p->lrate * error);
+            else 
+                continue;
         }
     }
 }

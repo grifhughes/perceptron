@@ -21,7 +21,7 @@ void
 destroy_perceptron(struct perceptron *p); 
 
 /* train perceptron */
-void
+void 
 learn(struct perceptron *p, struct tset_pair **tp, int D, float k);
 
 static inline __attribute__((always_inline)) 
@@ -38,5 +38,13 @@ int classify(struct perceptron *p, struct tset_pair *tp)
 {
     return dot_p(p->weights, tp->values, p->inputs) > 0 ? 1 : 0;
 }   
+
+static inline __attribute__((always_inline))
+void update_weights(struct perceptron *p, struct tset_pair *tp, float scalar)
+{
+    p->weights[0] += scalar;
+    for(int i = 1; i < p->inputs; ++i)
+        p->weights[i] += scalar * tp->values[i];
+}
 
 #endif
