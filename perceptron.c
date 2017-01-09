@@ -32,9 +32,10 @@ learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
             if(error != 0) {
                 float cached = p->lrate * error;
                 p->weights[0] += cached;
-                for(int a = 1; a < p->inputs; ++a) 
-                    p->weights[a] += cached * tp[i]->values[a];
-            } 
+                /* start at 1 to update weights as bias is w[0] & x[0] is 1 */ 
+                for(int j = 1; j < p->inputs; ++j) 
+                    p->weights[j] += cached * tp[i]->values[j];
+            } else continue;
         }
     }
 }

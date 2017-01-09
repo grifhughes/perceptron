@@ -33,6 +33,6 @@ main(void)
         destroy_tset_pair(training_examples[i]);
     }
 
-    printf("percent correct: %f\n", 100.0f - ((nwrong / NEXAMPLES) * 100.0f));
+    printf("%.0f%% correct\n", 100.0f - ((nwrong / NEXAMPLES) * 100.0f));
     destroy_perceptron(p);
 }
