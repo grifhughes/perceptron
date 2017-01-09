@@ -1,25 +1,24 @@
 #include "perceptron.h"
 #include <stdio.h>
 
-#define MAX_ITER 350 
+#define MAX_ITER 100 
 #define LEARN_RATE 0.125
-#define NEXAMPLES 130 
-#define NFEATURES 13 
+#define NEXAMPLES 100 
+#define NFEATURES 4 
 
 int
 main(void)
 {
     FILE *fp;
     struct tset_pair *training_examples[NEXAMPLES]; 
+    int classes[NEXAMPLES] = {0};
 
     fp = fopen("data.txt", "r");
-    int classes[NEXAMPLES] = {0};
 
     /* parse file */
     for(int i = 0; i < NEXAMPLES; ++i) {
         float tmp[NFEATURES];
-        fscanf(fp, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &classes[i], &tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4],
-                &tmp[5], &tmp[6], &tmp[7], &tmp[8], &tmp[9], &tmp[10], &tmp[11], &tmp[12]); 
+        fscanf(fp, "%f,%f,%f,%f,%d", &tmp[0], &tmp[1], &tmp[2], &tmp[3], &classes[i]);
         training_examples[i] = build_tset_pair(tmp, classes[i], NFEATURES);
     }
 
@@ -28,7 +27,7 @@ main(void)
 
     float nwrong = 0.0f;
     for(int i = 0; i < NEXAMPLES; ++i) { 
-        if(classes[i] != classify(sigmoid(p, training_examples[i])))
+        if(classes[i] != classify(p, training_examples[i]))
             ++nwrong;
         destroy_tset_pair(training_examples[i]);
     }

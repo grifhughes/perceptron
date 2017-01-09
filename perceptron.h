@@ -34,16 +34,9 @@ float dot_p(float *a, float *b, int l)
 }
 
 static inline __attribute__((always_inline)) 
-float sigmoid(struct perceptron *p, struct tset_pair *tp)
+int classify(struct perceptron *p, struct tset_pair *tp)
 {
-    float x = dot_p(p->weights, tp->values, p->inputs);
-    return (x / (1 + fabsf(x)));
+    return dot_p(p->weights, tp->values, p->inputs) > 0 ? 1 : 0;
 }   
-
-static inline __attribute__((always_inline)) 
-int classify(float z)
-{
-    return z >= 0.5 ? 1 : 0;
-}
 
 #endif

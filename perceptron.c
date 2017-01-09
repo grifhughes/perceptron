@@ -25,7 +25,7 @@ learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
 {
     for(int j = 0; j <= k; ++j) {
         for(int i = 0; i < D; ++i) {
-            int output = classify(sigmoid(p, tp[i]));
+            int output = classify(p, tp[i]);
             float error = tp[i]->c - output;
             if(error != 0) {
                 float cached = p->lrate * error;
