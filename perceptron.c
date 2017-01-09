@@ -23,21 +23,16 @@ destroy_perceptron(struct perceptron *p)
 void
 learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
 {
-    int iterations = 0; 
-    float gerr = 0.0f;
-    do {
-        ++iterations;
-        gerr = 0;
+    for(int j = 0; j <= k; ++j) {
         for(int i = 0; i < D; ++i) {
             int output = classify(sigmoid(p, tp[i]));
             float error = tp[i]->c - output;
             if(error != 0) {
                 float cached = p->lrate * error;
                 p->weights[0] += cached;
-                for(int j = 1; j < p->inputs; ++j) 
-                    p->weights[j] += cached * tp[i]->values[j];
-                gerr += error * error;
+                for(int a = 1; a < p->inputs; ++a) 
+                    p->weights[a] += cached * tp[i]->values[a];
             }
         }
-    } while(gerr != 0 && iterations <= k);
+    } 
 }

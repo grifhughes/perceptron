@@ -1,8 +1,8 @@
 #include "perceptron.h"
 #include <stdio.h>
 
-#define MAX_ITER 250 
-#define LEARN_RATE 0.1
+#define MAX_ITER 350 
+#define LEARN_RATE 0.125
 #define NEXAMPLES 130 
 #define NFEATURES 13 
 
@@ -29,7 +29,7 @@ main(void)
     float nwrong = 0.0f;
     for(int i = 0; i < NEXAMPLES; ++i) { 
         if(classes[i] != classify(sigmoid(p, training_examples[i])))
-            nwrong++;
+            ++nwrong;
         destroy_tset_pair(training_examples[i]);
     }
     printf("percent correct: %f\n", 100.0f - ((nwrong / NEXAMPLES) * 100.0f));

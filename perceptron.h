@@ -41,9 +41,9 @@ float sigmoid(struct perceptron *p, struct tset_pair *tp)
 }   
 
 static inline __attribute__((always_inline)) 
-int classify(float value)
+int classify(float z)
 {
-    return value >= 0.5 ? 1 : 0;
+    return z >= 0.5 ? 1 : 0;
 }
 
 #endif
