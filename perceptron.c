@@ -26,7 +26,7 @@ learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
     for(int i = 0; i < k; ++i) {
         for(int j = 0; j < D; ++j) {
             int output = classify(p, tp[j]);
-            float error = tp[j]->c - output;
+            int error = tp[j]->c - output;
             if(error != 0) 
                 update_weights(p, tp[j], p->lrate * error);
             else 
