@@ -31,7 +31,6 @@ learn(struct perceptron *p, struct tset_pair **tp, int D, float k)
                 continue;
             else 
                 update_weights(p, tp[j], p->lrate * error);
-
         }
     }
 }
