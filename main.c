@@ -9,12 +9,11 @@
 int
 main(void)
 {
+    srand(time(NULL));
     FILE *fp;
     struct tset_pair *training_examples[NEXAMPLES]; 
     struct perceptron *p = build_perceptron(NFEATURES, LEARN_RATE);
     int classes[NEXAMPLES] = {0};
-
-    srand(time(NULL));
 
     fp = fopen("data.txt", "r");
 
