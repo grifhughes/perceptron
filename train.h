@@ -10,11 +10,9 @@ struct tset_pair {
     int c, n;
 };
 
-/* build tset_pair from input vector and class */
 struct tset_pair *
 build_tset_pair(float *v, int c, int n);
 
-/* cleanup */
 void
 destroy_tset_pair(struct tset_pair *tp);
 
