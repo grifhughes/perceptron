@@ -14,6 +14,8 @@ main(void)
     struct perceptron *p = build_perceptron(NFEATURES, LEARN_RATE);
     int classes[NEXAMPLES] = {0};
 
+    srand(time(NULL));
+
     fp = fopen("data.txt", "r");
 
     /* parse file */

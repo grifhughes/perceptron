@@ -3,7 +3,6 @@
 
 #include "train.h"
 #include <time.h>
-#include <math.h>
 
 /* single layer perceptron, weights[0] stores bias */
 struct perceptron {
@@ -12,6 +11,7 @@ struct perceptron {
     int inputs;
 };
 
+/* seed rng before calling */
 struct perceptron *
 build_perceptron(int i, float l);
 

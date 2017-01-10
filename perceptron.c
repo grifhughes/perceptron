@@ -3,7 +3,6 @@
 struct perceptron *
 build_perceptron(int i, float l)
 {
-    srand(time(NULL));
     struct perceptron *tmp = malloc(sizeof(struct perceptron));
     tmp->inputs = i + 1;
     tmp->lrate = l;
